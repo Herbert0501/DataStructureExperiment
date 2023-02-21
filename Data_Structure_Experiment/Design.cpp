@@ -2,6 +2,7 @@
 **版本：0.5
 **作者：KaryWhite
 ***********************************/
+
 #pragma once
 #define _CRT_SECURE_NO_WARNINGS 1	/*防止不允许使用scnaf等不安全输入*/
 #include <stdio.h>
