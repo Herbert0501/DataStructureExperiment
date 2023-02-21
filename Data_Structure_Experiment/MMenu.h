@@ -296,6 +296,7 @@ void Link_Word_Frequency_Count() {
 
 	return;
 }
+
 /*基于二叉树的查找*/
 void BinaryTree_Word_Frequency_Count() {
 	system("cls");
@@ -318,6 +319,7 @@ void BinaryTree_Word_Frequency_Count() {
 
 	return;
 }
+
 /*基于哈希表的查找*/
 void Hash_Word_Frequency_Count() {
 	system("cls");
