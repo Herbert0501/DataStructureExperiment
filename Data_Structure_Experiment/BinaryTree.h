@@ -16,9 +16,9 @@ void inorder(pTreeNode root, FILE* fo);
 void SetColor(UINT uFore, UINT uBack);
 pTreeNode insertNode(pTreeNode p, char* temp);
 
+
 int allword;/*记录全部单词数量*/
-/*根节点*/
-TreeNode* root;
+TreeNode* root;/*根节点*/
 /*词频统计 */
 void Tree_Word_Frequency() {
 	/*初始一些变量*/
