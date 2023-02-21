@@ -167,6 +167,7 @@ int hashSelect(HashTable* ha, int key, int& count, int& collcount) {
 
 	return addr;
 }
+
 void Hash_Search() {
 	char tmp[255] = "";
 	HashTable* ha = h;
