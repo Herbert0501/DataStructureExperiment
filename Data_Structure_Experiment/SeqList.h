@@ -33,6 +33,7 @@ int comp2(const void* a, const void* b) {
 	return strlen(((table*)a)->head) - strlen(((table*)b)->head);
 }
 
+
 table words[MAXSIZE]; /*单词汇总*/
 table t{};			 /*结构体类型变量*/
 int num;		/*作为words的下标*/
@@ -251,6 +252,7 @@ void Table_Binary_Select() {
 			}
 		}
 	}
+
 	/*target 在数组范围的右边或者左边||
 	target 在数组范围中，且数组中不存在target*/
 	if (flag == 0 || (right == -2 || left == -2)) {
