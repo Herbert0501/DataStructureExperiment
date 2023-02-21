@@ -26,10 +26,9 @@ void insertNodes(pHeadNode head, char* str);
 pNode Link_QuicklySort(pNode begin, pNode end);
 void quicksort(pNode begin, pNode end);
 
-/*头结点*/
-pHeadNode head;
-/*尾结点*/
-pNode tail = NULL;
+
+pHeadNode head;/*头结点*/
+pNode tail = NULL;/*尾结点*/
 /*词频统计函数*/
 void Link_Word_Frequency() {
 	FILE* fi, * fo;		/*文件指针*/
@@ -86,6 +85,7 @@ void Link_Word_Frequency() {
 	fclose(fo);
 	return;
 }
+
 /*链表插入函数*/
 void insertNodes(pHeadNode head, char* str) {
 	pNode p = head->next;
@@ -116,6 +116,7 @@ void insertNodes(pHeadNode head, char* str) {
 	tail = node;
 	return;
 }
+
 /*链表的查找函数*/
 void Link_Word_Find() {
 	int flag = 0;
