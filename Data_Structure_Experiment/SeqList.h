@@ -47,9 +47,8 @@ void Table_Word_Frequency(int m) {
 	char temp[255] = { 0 }; /*接收单词*/
 	char tmp[255] = { 0 }; /*接收处理的单词*/
 
-	FILE* fp; /*文件指针*/
-	fp = fopen("InFile.txt", "r");
-	assert(fp != NULL);	/*如果打不开文件则输出错误并停止运行*/
+	FILE* fp = fopen("InFile.txt", "r");
+	assert(fp);	/*如果打不开文件则输出错误并停止运行*/
 	int i, j, k;
 
 	/*fscanf只接受字符串类型*/
@@ -112,7 +111,7 @@ void Table_Word_Frequency(int m) {
 
 	/*写入文件*/
 	fprintf(fa, "%d\n", t.allcnt);
-	for (i = num - 1; i >= 0; --i) {
+	for (i = num-1; i >= 0; --i) {
 		//if ((words[i].cnt) / num < 0.1) {  /*低词频过滤*/
 		//	continue;
 		//}
@@ -138,7 +137,7 @@ void Table_Order_Select() {
 	scanf("%s", temp);
 	time_t startTime = clock();		/*记录运行开始时间*/
 	/*进行遍历顺序查找*/
-	for (int i = 0; i < num; ++i) {
+	for (int i = num-1; i >= 0; --i) {
 		/*如果没找到则继续循环*/
 		if (strcmp(words[i].head, temp) < 0 || strcmp(words[i].head, temp) > 0) {
 			flag = 1;
@@ -149,7 +148,7 @@ void Table_Order_Select() {
 			time_t endTime = clock();
 			/*使用公式clock()/CLOCKS_PER_SEC来计算一个进程自身的运行时间*/
 			double totalTime = (double)(endTime - startTime) / CLOCKS_PER_SEC;
-			double timeSize = (i + 1.0) / 2;
+			double timeSize = ((num-i) + 1.0) / 2;
 			printf("%s该单词的词频为：%d", c, words[i].cnt);
 			printf("\n%s查找该单词所花费的时间：%.6f", c, totalTime);
 			printf("\n%s平均查找长度：%.4f", c, timeSize);
