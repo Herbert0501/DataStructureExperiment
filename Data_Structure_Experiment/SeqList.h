@@ -43,10 +43,10 @@ void Table_Word_Frequency(int m) {
 	/*初始化*/
 	num = 0;
 	t.allcnt = 0;
-	words[MAXSIZE] = { 0 };
+	memset(words, '\0', sizeof(words));
 
-	char temp[255] = { 0 }; /*接收单词*/
-	char tmp[255] = { 0 }; /*接收处理的单词*/
+	char temp[255] = ""; /*接收单词*/
+	char tmp[255] = ""; /*接收处理的单词*/
 
 	FILE* fp = fopen("InFile.txt", "r");
 	assert(fp);	/*如果打不开文件则输出错误并停止运行*/
