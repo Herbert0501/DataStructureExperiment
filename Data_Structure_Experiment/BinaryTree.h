@@ -29,7 +29,8 @@ void Tree_Word_Frequency() {
 
 	FILE* fi;
 	fi = fopen("InFile.txt", "r");
-	assert(fi != NULL);		/*若打开失败则输出崩溃并结束运行*/
+	/*若打开失败则输出崩溃并结束运行*/
+	assert(fi != NULL);		
 
 	while (fscanf(fi, "%s", temp) != EOF) {
 		int key = 0;
@@ -67,11 +68,11 @@ pTreeNode insertNode(pTreeNode p, char* temp) {
 	/*如果结点为空就新建*/
 	if (p == NULL) {
 		p = (pTreeNode)malloc(sizeof(TreeNode));
-		strcpy(p->word, temp);	/*拷贝*/
-		p->cnt = 1;	/*次数记为1*/
+		strcpy(p->word, temp);		/*拷贝*/
+		p->cnt = 1;		/*次数记为1*/
 		p->left = NULL;
 		p->right = NULL;
-		++allword;	/*单词总量++*/
+		++allword;		/*单词总量++*/
 	}
 	else if (strcmp(p->word, temp) == 0) {
 		/*相同的单词就加一*/
@@ -169,6 +170,7 @@ int BinaryKSize(pTreeNode p, int k) {
 			+ BinaryKSize(p->right, k - 1);
 	}
 }
+
 /*计算平均查找长度（成功查找成功的平均查找长度为：
 ∑（本层高度*本层元素个数）/节点总数*/
 double TimeSize() {
