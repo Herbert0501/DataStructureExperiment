@@ -27,8 +27,7 @@ void Hash_Search();
 int hashSelect(HashTable* ha, int key, int& count, int& collcount);
 void SetColor(UINT uFore, UINT uBack);
 
-/*哈希函数
-为每个字符串设置一个专属的key*/
+/*哈希函数*/
 UINT hashIndex(const char* temp) {
 	if (temp == NULL) return 0;
 	UINT index = 0;	/*可以满足大部分的单词*/
@@ -143,7 +142,7 @@ void insertHash(HashTable* ha, char* temp) {
 
 }
 
-/*哈希查找函数,开放地址法*/
+/*哈希查找函数,开放地址法,count,collcount用来计算查找长度*/
 int hashSelect(HashTable* ha, int key, int& count, int& collcount) {
 
 	/*记录地址*/
