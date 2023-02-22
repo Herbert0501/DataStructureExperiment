@@ -41,8 +41,7 @@ UINT hashIndex(const char* temp) {
 	return index % HASHNUMBER;
 }
 
-/*散列表创建*/
-/*全局h*/
+/*散列表初始化创建*/
 HashTable* h;
 HashTable* initHashTable(HashTable* ha) {
 
@@ -57,43 +56,6 @@ HashTable* initHashTable(HashTable* ha) {
 		ha->collision[i] = 0;
 	}
 	return ha;
-}
-
-/*插入函数*/
-void insertHash(HashTable* ha, char* temp) {
-	int m = NULLKEY;
-	/*求散列地址*/
-	UINT addr = hashIndex(temp);
-	/*设为专属key*/
-	int key = addr;
-	/*查找是否有重复的*/
-	int count = 1;	/*记录冲突*/
-	int collcount = 0;
-	int flag = hashSelect(ha, key, count, collcount);
-
-	if (flag != -1) {
-		/*如果找到了相同的单词就次数加一*/
-		++ha->val[flag].cnt;
-	}
-	/*没找到重复的单词*/
-	else {
-		/*冲突次数置为1*/
-		ha->coll = 1;
-		/*找到空的地址*/
-		while (ha->elem[addr] != m) {
-			/*开放地址法*/
-			addr = (addr + 1) % HASHNUMBER;
-			/*冲突一次就++*/
-			++ha->coll;
-		}
-		ha->elem[addr] = key;	/*对新的空值地址，赋值*/
-		ha->collision[addr] = ha->coll;	/*记录冲突*/
-		ha->val[addr].str = (char*)malloc(sizeof(char) * strlen(temp));
-		assert(ha->val[addr].str != nullptr);/*申请内存失败则报错*/
-		strcpy(ha->val[addr].str, temp);/*将字符串拷贝到哈希表*/
-		ha->val[addr].cnt = 1;	/*频率为1*/
-	}
-
 }
 
 /*词频统计函数*/
@@ -143,10 +105,48 @@ void Hash_Word_Frequency() {
 	fclose(fo);
 }
 
+/*插入函数*/
+void insertHash(HashTable* ha, char* temp) {
+	int m = NULLKEY;
+	/*求散列地址*/
+	UINT addr = hashIndex(temp);
+	/*设为专属key*/
+	int key = addr;
+
+	int count = 1;	/*记录冲突*/
+	int collcount = 0;
+	/*查找是否有重复的*/
+	int flag = hashSelect(ha, key, count, collcount);
+
+	if (flag != -1) {
+		/*如果找到了相同的单词就次数加一*/
+		++ha->val[flag].cnt;
+	}
+	/*没找到重复的单词*/
+	else {
+		/*冲突次数置为1*/
+		ha->coll = 1;
+		/*找到空的地址*/
+		while (ha->elem[addr] != m) {
+			/*开放地址法*/
+			addr = (addr + 1) % HASHNUMBER;
+			/*冲突一次就++*/
+			++ha->coll;
+		}
+		ha->elem[addr] = key;	/*对新的空值地址，赋值*/
+		ha->collision[addr] = ha->coll;	/*记录总冲突*/
+		ha->val[addr].str = (char*)malloc(sizeof(char) * strlen(temp));
+		assert(ha->val[addr].str != nullptr);/*申请内存失败则报错*/
+		strcpy(ha->val[addr].str, temp);/*将字符串拷贝到哈希表*/
+		ha->val[addr].cnt = 1;	/*频率为1*/
+	}
+
+}
+
 /*哈希查找函数,开放地址法*/
 int hashSelect(HashTable* ha, int key, int& count, int& collcount) {
 
-	/*获取地址*/
+	/*记录地址*/
 	int addr = key;
 	while (ha->elem[addr] != key) {
 		/*记录查找成功的冲突次数*/
@@ -162,7 +162,7 @@ int hashSelect(HashTable* ha, int key, int& count, int& collcount) {
 			return -1;
 		}
 	}
-	/*再把找到的addr的那个查找次数加上去*/
+	/*再把找到的addr的那个查找冲突次数加上去*/
 	collcount += ha->collision[addr];
 
 	return addr;
@@ -185,7 +185,7 @@ void Hash_Search() {
 	/*找到key*/
 	UINT key = hashIndex(tmp);
 	/*下面两个变量，用于计算平均查找长度(成功)*/
-	int count = 1;	
+	int count = 1;
 	int collcount = 0;
 	/*找到单词地址*/
 	int addr = hashSelect(ha, key, count, collcount);

@@ -103,16 +103,20 @@ void Table_Word_Frequency(int m) {
 	qsort(words, num, sizeof(table), comp1);
 
 	FILE* fa;
-	if(m == 2)
+	if (m == 2)
 		/*顺序表的顺序查找*/
 		fa = fopen("OutFile1.txt", "w+");
 	else
 		/*折半查找*/
 		fa = fopen("OutFile3.txt", "w+");
-	
+
 	/*写入文件*/
 	fprintf(fa, "%d\n", t.allcnt);
 	for (i = num - 1; i >= 0; --i) {
+		//if ((words[i].cnt) / num < 0.1) {  /*低词频过滤*/
+		//	continue;
+		//}
+		//else
 		fprintf(fa, "%s\t%d\n", words[i].head, words[i].cnt);
 	}
 	fclose(fa);
@@ -187,7 +191,7 @@ int getLeftBorder(char* target) {
 	while (left <= right) {
 		int middle = left + ((right - left) / 2);
 		// 寻找左边界，nums[middle] >= target的时候更新right
-		if (strlen(words[middle].head) >= strlen(target)) { 
+		if (strlen(words[middle].head) >= strlen(target)) {
 			right = middle - 1;
 			leftBorder = right;
 		}

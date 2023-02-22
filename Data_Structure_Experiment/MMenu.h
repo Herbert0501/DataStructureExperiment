@@ -41,7 +41,7 @@ void MainMenu() {
 	printf("%s4.退出\n", c);
 	printf("%s请按相应数字进行选择:", c);
 	SMenu();
- }
+}
 
 void Menu1() {
 
@@ -177,7 +177,7 @@ void SMenu5() {
 	{
 	case 1:
 		Table_Word_Frequency_Count(1); break;
-	case 2: 
+	case 2:
 		Table_Word_Frequency(1), Table_Binary_Select(), Any_Key(5); break;
 	case 3:
 		Menu1(); break;
@@ -207,7 +207,7 @@ void SMenu6() {
 	{
 	case 1:
 		Table_Word_Frequency_Count(2); break;
-	case 2: 
+	case 2:
 		Table_Word_Frequency(2), Table_Order_Select(), Any_Key(6); break;
 	case 3:
 		Menu4(); break;
@@ -289,7 +289,7 @@ void Link_Word_Frequency_Count() {
 	double totalTime = (double)(endTime - startTime) / CLOCKS_PER_SEC;
 	printf("%s%s--已完成词频统计\n\n", c1, c);
 	printf("%s--词频统计所花费的时间：%.6f\n", c, totalTime);
-	
+
 	printf("\n%s请按任意键返回", c);
 	_getch();
 	Menu7();
@@ -357,10 +357,10 @@ void SMenu() {
 	case 3:
 		Menu3(); break;
 	case 4:
-		SetColor(1,15), 
-		printf("\n\t\t\t\t****感谢您的使用****\n"),
-		SetColor(0,15),
-		theEnd(); break;
+		SetColor(1, 15),
+			printf("\n\t\t\t\t****感谢您的使用****\n"),
+			SetColor(0, 15),
+			theEnd(); break;
 	default:
 		errorEnter(0);
 		break;

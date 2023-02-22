@@ -26,9 +26,10 @@ void insertNodes(pHeadNode head, char* str);
 pNode Link_QuicklySort(pNode begin, pNode end);
 void quicksort(pNode begin, pNode end);
 
-
-pHeadNode head;/*头结点*/
-pNode tail = NULL;/*尾结点*/
+/*头结点*/
+pHeadNode head;
+/*尾结点*/
+pNode tail = NULL;
 /*词频统计函数*/
 void Link_Word_Frequency() {
 	FILE* fi, * fo;		/*文件指针*/
@@ -85,7 +86,6 @@ void Link_Word_Frequency() {
 	fclose(fo);
 	return;
 }
-
 /*链表插入函数*/
 void insertNodes(pHeadNode head, char* str) {
 	pNode p = head->next;
@@ -116,7 +116,6 @@ void insertNodes(pHeadNode head, char* str) {
 	tail = node;
 	return;
 }
-
 /*链表的查找函数*/
 void Link_Word_Find() {
 	int flag = 0;
@@ -140,7 +139,7 @@ void Link_Word_Find() {
 	while (p) {
 		++count;
 		/*如果相等则输出*/
-		if (strcmp(p->val.w, tmp)==0) {
+		if (strcmp(p->val.w, tmp) == 0) {
 			flag = 1;
 			time_t endTime = clock();
 			/*使用公式clock()/CLOCKS_PER_SEC来计算一个进程自身的运行时间*/
@@ -191,7 +190,7 @@ pNode Link_QuicklySort(pNode begin, pNode end) {
 		}
 		fast = fast->next;
 	}
-	/*结束循环后再次交换*/
+	/*结束循环后再次交换,即交换链表头元素key与slow指向元素值*/
 	Swap(&begin->val.t, &slow->val.t);
 	strcpy(tmp, begin->val.w);
 	strcpy(begin->val.w, slow->val.w);
