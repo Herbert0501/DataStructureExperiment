@@ -290,8 +290,9 @@ void Link_Word_Frequency_Count() {
 	printf("%s%s--已完成词频统计\n\n", c1, c);
 	printf("%s--词频统计所花费的时间：%.6f\n", c, totalTime);
 
-	printf("\n%s请按任意键返回", c);
-	_getch();
+	printf("\n%s", c);
+	system("pause");
+	getchar();
 	Menu7();
 
 	return;
@@ -313,8 +314,9 @@ void BinaryTree_Word_Frequency_Count() {
 	printf("%s%s--已完成词频统计\n\n", c1, c);
 	printf("%s--词频统计所花费的时间：%.6f\n", c, totalTime);
 
-	printf("\n%s请按任意键返回", c);
-	_getch();
+	printf("\n%s", c);
+	system("pause");
+	getchar();
 	Menu2();
 
 	return;
@@ -336,8 +338,9 @@ void Hash_Word_Frequency_Count() {
 	printf("%s%s--已完成词频统计\n\n", c1, c);
 	printf("%s--词频统计所花费的时间：%.6f\n", c, totalTime);
 
-	printf("\n%s请按任意键返回", c);
-	_getch();
+	printf("\n%s", c);
+	system("pause");
+	getchar();
 	Menu2();
 
 	return;
@@ -347,6 +350,7 @@ void Hash_Word_Frequency_Count() {
 void SMenu() {
 	int n;
 	scanf_s("%d", &n);
+
 	system("cls");
 	switch (n)
 	{
@@ -386,8 +390,9 @@ int theEnd() {
 }
 
 void Any_Key(int n) {
-	printf("\n%s请按任意键返回<", c);
-	_getch();
+	printf("\n%s", c);
+	system("pause");
+	getchar();
 	switch (n)
 	{
 	case 0:
@@ -417,10 +422,9 @@ void Any_Key(int n) {
 void errorEnter(int n) {
 	system("cls");
 	SetColor(4, 15);
-	printf("\n%s输入错误！", c);
+	printf("\n%s输入错误！\n", c);
 	SetColor(0, 15);
 	Any_Key(n);
-	return;
 }
 
 void SetColor(UINT uFore, UINT uBack) {
