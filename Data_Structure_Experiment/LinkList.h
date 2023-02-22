@@ -75,6 +75,7 @@ void Link_Word_Frequency() {
 
 	/*快速排序*/
 	quicksort(head->next, NULL);
+
 	/*写入*/
 	fo = fopen("OutFile2.txt", "w+");
 	pNode p = head->next;
@@ -86,6 +87,7 @@ void Link_Word_Frequency() {
 	fclose(fo);
 	return;
 }
+
 /*链表插入函数*/
 void insertNodes(pHeadNode head, char* str) {
 	pNode p = head->next;
@@ -101,6 +103,8 @@ void insertNodes(pHeadNode head, char* str) {
 	/*如果没有该单词则新建*/
 	pNode node = (pNode)malloc(sizeof(Node));
 	node->val.w = (char*)malloc(sizeof(char) * strlen(str));
+	/*为空则报错。不为空则正常*/
+	assert(node->val.w);
 	/*次数设为1*/
 	node->val.t = 1;
 	node->next = NULL;
@@ -116,6 +120,7 @@ void insertNodes(pHeadNode head, char* str) {
 	tail = node;
 	return;
 }
+
 /*链表的查找函数*/
 void Link_Word_Find() {
 	int flag = 0;
@@ -175,7 +180,7 @@ void Swap(int* p1, int* p2) {
 pNode Link_QuicklySort(pNode begin, pNode end) {
 	pNode slow = begin;			/*慢指针*/
 	pNode fast = begin->next;	/*快指针*/
-	int val = begin->val.t;		/*记录val, 基准值*/
+	int val = begin->val.t;		/*记录val, 基准值key*/
 	char tmp[255] = "";			/*临时存储*/
 
 	while (fast != end) {
@@ -187,6 +192,8 @@ pNode Link_QuicklySort(pNode begin, pNode end) {
 			strcpy(tmp, fast->val.w);
 			strcpy(fast->val.w, slow->val.w);
 			strcpy(slow->val.w, tmp);
+			/*置空接收下一个字符*/
+			memset(tmp, '\0', sizeof(tmp));
 		}
 		fast = fast->next;
 	}
