@@ -14,7 +14,7 @@
 #include <math.h>
 #include <ctype.h>
 #include <conio.h> /*用了一个_getch函数,获取任意keyboard键*/
-#include <assert.h> /*用来获取异常*/
+#include <assert.h>
 #include "MMenu.h"
 
 
