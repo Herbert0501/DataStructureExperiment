@@ -384,6 +384,7 @@ int theEnd() {
 	system("pause");
 	exit(1);
 }
+
 void Any_Key(int n) {
 	printf("\n%s请按任意键返回<", c);
 	_getch();
@@ -411,6 +412,7 @@ void Any_Key(int n) {
 
 
 }
+
 /*输入的选项不对的情况下*/
 void errorEnter(int n) {
 	system("cls");
