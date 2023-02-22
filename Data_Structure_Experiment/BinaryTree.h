@@ -98,9 +98,9 @@ void inorder(pTreeNode root, FILE* fo) {
 	inorder(root->right, fo);
 }
 
-/*二叉树排序树的查找分支*/
+/*二叉树排序树的查找*/
 pTreeNode TreeSearchBST(pTreeNode p, char* temp) {
-	/*如果树为空或者找到了则结束递归*/
+	/*如果树为空 或者 找到了,则结束递归*/
 	if (!p || (strcmp(p->word, temp) == 0)) return p;
 	/*比较<0去左子树*/
 	else if ((strcmp(p->word, temp) < 0))
@@ -144,7 +144,7 @@ void Tree_Word_Select() {
 	}
 	return;
 }
-/*统计二叉树的层数*/
+/*统计二叉树的层数(高度)*/
 int calcTreeLevel(pTreeNode p) {
 	int leftlv = 0;
 	int rightlv = 0;
@@ -160,15 +160,17 @@ int calcTreeLevel(pTreeNode p) {
 /*返回左右子树第k-1层的节点个数（因为当前树的根节点算一层，所以递归下去每次减去一层）。*/
 /*只要传入的参数 k 等于1，就到达了第K层*/
 int BinaryKSize(pTreeNode p, int k) {
-	if (!p) return 0;
-	else if (k == 1) return 1;
+	if (!p)
+		return 0;
+	else if (k == 1)
+		return 1;
 	else {
 		return BinaryKSize(p->left, k - 1)		/*左树和右树的每层结点同时遍历*/
 			+ BinaryKSize(p->right, k - 1);
 	}
 }
 /*计算平均查找长度（成功查找成功的平均查找长度为：
-∑（本层高度本层元素个数）/节点总数*/
+∑（本层高度*本层元素个数）/节点总数*/
 double TimeSize() {
 	pTreeNode p = root;
 	int allnode = 0;
