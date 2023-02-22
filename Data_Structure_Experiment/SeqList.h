@@ -1,4 +1,5 @@
 #pragma once
+
 #define MAXSIZE 5001
 /*º¯ÊıÉùÃ÷*/
 void SetColor(UINT uFore, UINT uBack);
