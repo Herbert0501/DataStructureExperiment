@@ -307,7 +307,7 @@ void BinaryTree_Word_Frequency_Count() {
 	SetColor(0, 15);
 
 	time_t startTime = clock();
-	Link_Word_Frequency();
+	Tree_Word_Frequency();
 	time_t endTime = clock();
 
 	double totalTime = (double)(endTime - startTime) / CLOCKS_PER_SEC;
