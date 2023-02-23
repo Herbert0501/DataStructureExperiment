@@ -27,8 +27,7 @@ void Tree_Word_Frequency() {
 	char tmp[255] = "";/*处理过的单词*/
 	root = NULL;
 
-	FILE* fi;
-	fi = fopen("InFile.txt", "r");
+	FILE* fi = fopen("InFile.txt", "r");
 	/*若打开失败则输出崩溃并结束运行*/
 	assert(fi != NULL);		
 
