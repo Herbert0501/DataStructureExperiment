@@ -144,7 +144,6 @@ void insertHash(HashTable* ha, char* temp) {
 
 /*哈希查找函数,开放地址法,count,collcount用来计算查找长度*/
 int hashSelect(HashTable* ha, int key, int& count, int& collcount) {
-
 	/*记录地址*/
 	int addr = key;
 	while (ha->elem[addr] != key) {
@@ -153,7 +152,6 @@ int hashSelect(HashTable* ha, int key, int& count, int& collcount) {
 
 		/*开放地址法*/
 		addr = (addr + 1) % HASHNUMBER;
-
 		++count;
 
 		if (ha->elem[addr] == NULLKEY) {
