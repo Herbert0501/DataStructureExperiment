@@ -26,10 +26,9 @@ void insertNodes(pHeadNode head, char* str);
 pNode Link_QuicklySort(pNode begin, pNode end);
 void quicksort(pNode begin, pNode end);
 
-/*头结点*/
-pHeadNode head;
-/*尾结点*/
-pNode tail = NULL;
+
+pHeadNode head;/*头结点*/
+pNode tail = NULL;/*尾结点*/
 /*词频统计函数*/
 void Link_Word_Frequency() {
 	FILE* fi, * fo;		/*文件指针*/
@@ -91,7 +90,6 @@ void Link_Word_Frequency() {
 /*链表插入函数*/
 void insertNodes(pHeadNode head, char* str) {
 	pNode p = head->next;
-
 	/*检查重复的单词*/
 	while (p) {
 		if (strcmp(p->val.w, str) == 0) {
