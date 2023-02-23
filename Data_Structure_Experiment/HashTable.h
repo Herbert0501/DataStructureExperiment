@@ -12,8 +12,8 @@ typedef struct Word {
 /*哈希表结构体*/
 typedef struct HashTable {
 	int* elem;	/*存key*/
-	int* collision;	/*记录一个key的总哈希冲突次数（成功）*/
-	int coll;/*记录哈希冲突（成功）*/
+	int* collision;	/*记录一个key的总哈希冲突次数*/
+	int coll;/*记录哈希冲突*/
 	int size;	/*记录哈希表长度*/
 	Word val[HASHNUMBER];
 	int allnum;	/*记录总单词量*/
